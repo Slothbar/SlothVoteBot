@@ -2,7 +2,7 @@ import logging
 import requests
 import json
 import os
-from telegram import Update, ParseMode
+from telegram.constants import ParseMode
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
 # === CONFIGURATION ===
