@@ -1,6 +1,7 @@
 import os
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_BOT_TOKEN = "7561329023:AAFpC9_5UrMe9UUZxv2Bmw0FCfDeeF_DGdY"
+
 
 if not TELEGRAM_BOT_TOKEN:
     raise ValueError("ERROR: TELEGRAM_BOT_TOKEN is missing! Check your environment variables.")
