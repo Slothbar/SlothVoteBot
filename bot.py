@@ -1,9 +1,6 @@
 import os
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-
-# Debugging: Print the token inside Heroku logs
-print(f"DEBUG: TELEGRAM_BOT_TOKEN is {TELEGRAM_BOT_TOKEN}")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 
 if not TELEGRAM_BOT_TOKEN:
     raise ValueError("ERROR: TELEGRAM_BOT_TOKEN is missing from Heroku environment variables!")
