@@ -2,13 +2,14 @@ import logging
 import requests
 import json
 import os
+from telegram import Update
 from telegram.constants import ParseMode
-from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext
 
 # === CONFIGURATION ===
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")  # Use environment variables for security
+TELEGRAM_BOT_TOKEN = os.getenv("7561329023:AAG2plDU18EQj15Qh1O2LxPmuXgpgkq3QkM")  # Use environment variables for security
 HEDERA_RECEIVING_WALLET = "0.0.8063721"  # Your Hedera wallet
-SLOTHSAFE_GROUP_ID = -1001234567890  # Replace with actual chat ID
+SLOTHSAFE_GROUP_ID = -4617775389  # Replace with actual chat ID
 VOTE_PRICE = 1  # 1 SLOTHBAR token
 
 # === LOGGING SETUP ===
@@ -130,14 +131,13 @@ def start(update: Update, context: CallbackContext):
     update.message.reply_text("Hello! Use /vote to start voting.")
 
 def main():
-    updater = Updater(TELEGRAM_BOT_TOKEN, use_context=True)
-    dp = updater.dispatcher
+    application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
+    dp = application
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("vote", vote))
     dp.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, wallet_submission))
     dp.add_handler(MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, welcome_new_user))
-    updater.start_polling()
-    updater.idle()
+    application.run_polling()
 
 if __name__ == "__main__":
     main()
