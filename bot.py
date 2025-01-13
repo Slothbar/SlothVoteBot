@@ -3,7 +3,7 @@ import requests
 import json
 import os
 from telegram.constants import ParseMode
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
 
 # === CONFIGURATION ===
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")  # Use environment variables for security
@@ -134,8 +134,8 @@ def main():
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("vote", vote))
-    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, wallet_submission))
-    dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, welcome_new_user))
+    dp.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, wallet_submission))
+    dp.add_handler(MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, welcome_new_user))
     updater.start_polling()
     updater.idle()
 
