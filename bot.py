@@ -1,11 +1,12 @@
 import os
 
-TELEGRAM_BOT_TOKEN = "7561329023:AAFpC9_5UrMe9UUZxv2Bmw0FCfDeeF_DGdY"
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
+# Debugging: Print token to Heroku logs
+print(f"DEBUG: Telegram Token is {TELEGRAM_BOT_TOKEN}")
 
 if not TELEGRAM_BOT_TOKEN:
-    raise ValueError("ERROR: TELEGRAM_BOT_TOKEN is missing! Check your environment variables.")
-
+    raise ValueError("ERROR: TELEGRAM_BOT_TOKEN is missing!")
 import logging
 import requests
 import json
