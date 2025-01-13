@@ -7,7 +7,7 @@ from telegram.constants import ParseMode
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext
 
 # === CONFIGURATION ===
-TELEGRAM_BOT_TOKEN = os.getenv("7561329023:AAG2plDU18EQj15Qh1O2LxPmuXgpgkq3QkM")  # Use environment variables for security
+TELEGRAM_BOT_TOKEN = os.getenv("7561329023:AAFpC9_5UrMe9UUZxv2Bmw0FCfDeeF_DGdY")  # Use environment variables for security
 HEDERA_RECEIVING_WALLET = "0.0.8063721"  # Your Hedera wallet
 SLOTHSAFE_GROUP_ID = -4617775389  # Replace with actual chat ID
 VOTE_PRICE = 1  # 1 SLOTHBAR token
