@@ -1,9 +1,12 @@
 import os
+from telegram.ext import Application
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 
 if not TELEGRAM_BOT_TOKEN:
-    raise ValueError("ERROR: TELEGRAM_BOT_TOKEN is missing from Heroku environment variables!")
+    raise ValueError("❌ TELEGRAM_BOT_TOKEN is not set! Check your Heroku config.")
+
+application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
 
 import logging
 import requests
